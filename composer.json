@@ -1,0 +1,31 @@
+{
+    "name": "goncziakos/podcast-feed",
+    "description": "Generate RSS feed for podcast, including iTunes, RawVoice, DublinCore and syndication fields.",
+    "type": "library",
+    "keywords": [ "podcast", "rss", "feed", "itunes", "rawvoice", "dublincore", "syndication"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Gönczi Ákos",
+            "email": "goncziakos@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.3",
+        "ext-dom": "*",
+        "silverorange/castanet": "^2.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "GoncziAkos\\Podcast\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "GoncziAkos\\Podcast\\Tests\\": "tests/"
+        }
+    }
+}
