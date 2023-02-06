@@ -10,6 +10,12 @@ Installation
 composer require goncziakos/podcast-feed
 ```
 
+Testing
+------------
+```sh
+php vendor/bin/phpunit
+```
+
 Using
 ------------
 ```php

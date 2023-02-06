@@ -9,54 +9,26 @@ use DOMNode;
 
 class Feed extends Castanet_Feed
 {
-    /**
-     * @var string
-     */
-    private $updatePeriod = 'hourly';
+    private string $updatePeriod = 'hourly';
 
-    /**
-     * @var int
-     */
-    private $updateFrequency = 1;
+    private int $updateFrequency = 1;
 
-    /**
-     * @var string
-     */
-    private $explicit = 'clean';
 
-    /**
-     * @var string
-     */
-    private $rawvoiceLocation = '';
+    private string $explicit = 'clean';
 
-    /**
-     * @var string
-     */
-    private $rawvoiceDonateTitle = '';
+    private string $rawvoiceLocation = '';
 
-    /**
-     * @var string
-     */
-    private $rawvoiceDonateLink = '';
+    private string $rawvoiceDonateTitle = '';
 
-    /**
-     * @var string
-     */
-    private $rawvoiceSubscribeFeed = '';
+    private string $rawvoiceDonateLink = '';
 
-    /**
-     * @var array
-     */
-    private $rawvoiceSubscribers = [];
+    private string $rawvoiceSubscribeFeed = '';
 
-    /**
-     * The iTunes category of this feed
-     *
-     * @var array
-     */
-    protected $itunes_category = [];
+    private array $rawvoiceSubscribers = [];
 
-    private $namespace = [
+    private array $itunes_categories = [];
+
+    private array $namespace = [
         "xmlns:content" => 'http://purl.org/rss/1.0/modules/content/',
         "xmlns:wfw" => "http://wellformedweb.org/CommentAPI/",
         "xmlns:dc" => "http://purl.org/dc/elements/1.1/",
@@ -73,11 +45,11 @@ class Feed extends Castanet_Feed
     public function addItunesCategory(
         string $title,
         array $subcategories = array()
-    ) {
-        $this->itunes_category[$title] = $subcategories;
+    ): void {
+        $this->itunes_categories[$title] = $subcategories;
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         $document = new DOMDocument('1.0', 'utf-8');
         $document->formatOutput = true;
@@ -96,9 +68,9 @@ class Feed extends Castanet_Feed
         return $document->saveXML();
     }
 
-    protected function buildItunesCategories(DOMNode $parent)
+    protected function buildItunesCategories(DOMNode $parent): void
     {
-        foreach ($this->itunes_category as $category => $subcategories) {
+        foreach ($this->itunes_categories as $category => $subcategories) {
             $document = $parent->ownerDocument;
             $node = $document->createElementNS(
                 Castanet::ITUNES_NAMESPACE,
@@ -119,7 +91,7 @@ class Feed extends Castanet_Feed
         }
     }
 
-    public function build(DOMNode $parent)
+    public function build(DOMNode $parent): void
     {
         $document = $parent->ownerDocument;
 
@@ -145,14 +117,14 @@ class Feed extends Castanet_Feed
         $this->buildItems($channel);
     }
 
-    public function setImage($url, $width = 0, $height = 0)
+    public function setImage($url, $width = 0, $height = 0): void
     {
         $this->image_url = strval($url);
         $this->image_width = intval($width);
         $this->image_height = intval($height);
     }
 
-    protected function buildImage(DOMNode $parent)
+    protected function buildImage(DOMNode $parent): void
     {
         // The standard RSS image element should be a max of 144x400px
         if ($this->image_url != '') {
@@ -190,7 +162,7 @@ class Feed extends Castanet_Feed
         }
     }
 
-    protected function buildDcUpdate(DOMNode $parent)
+    protected function buildDcUpdate(DOMNode $parent): void
     {
         $document = $parent->ownerDocument;
 
@@ -211,7 +183,7 @@ class Feed extends Castanet_Feed
         $parent->appendChild($node);
     }
 
-    protected function buildRawvoice(DOMNode $parent)
+    protected function buildRawvoice(DOMNode $parent): void
     {
         $document = $parent->ownerDocument;
         if ($this->rawvoiceLocation) {
@@ -254,7 +226,7 @@ class Feed extends Castanet_Feed
         $this->rawvoiceSubscribeFeed = $rawvoiceSubscribeFeed;
     }
 
-    public function addRawvoiceSubscriber(string $type, string $link)
+    public function addRawvoiceSubscriber(string $type, string $link): void
     {
         $this->rawvoiceSubscribers[$type] = $link;
     }

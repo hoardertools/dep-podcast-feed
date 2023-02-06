@@ -8,29 +8,17 @@ use DOMNode;
 
 class Item extends Castanet_Item
 {
-    const DC_NAMESPACE = 'http://purl.org/dc/elements/1.1/';
+    public const DC_NAMESPACE = 'http://purl.org/dc/elements/1.1/';
 
-    /**
-     * @var string
-     */
-    private $postId = '';
+    private string $postId = '';
 
-    /**
-     * @var string
-     */
-    private $author = '';
+    private string $author = '';
 
-    /**
-     * @var string
-     */
-    private $creator = '';
+    private string $creator = '';
 
-    /**
-     * @var array
-     */
-    private $categories = [];
+    private array $categories = [];
 
-    public function build(DOMNode $parent)
+    public function build(DOMNode $parent): void
     {
         $item = $parent->ownerDocument->createElement('item');
         $parent->appendChild($item);
@@ -56,7 +44,7 @@ class Item extends Castanet_Item
         $this->categories = $categories;
     }
 
-    public function addCategory(string $category)
+    public function addCategory(string $category): void
     {
         $this->categories[] = $category;
     }
@@ -76,7 +64,7 @@ class Item extends Castanet_Item
         $this->creator = $creator;
     }
 
-    protected function buildItunesAuthor(DOMNode $parent)
+    protected function buildItunesAuthor(DOMNode $parent): void
     {
 
         if ($this->author) {
@@ -94,7 +82,7 @@ class Item extends Castanet_Item
         }
     }
 
-    protected function buildPostId(DOMNode $parent)
+    protected function buildPostId(DOMNode $parent): void
     {
         if ($this->postId) {
             $document = $parent->ownerDocument;
@@ -107,7 +95,7 @@ class Item extends Castanet_Item
         }
     }
 
-    protected function buildCreator(DOMNode $parent)
+    protected function buildCreator(DOMNode $parent): void
     {
         if ($this->creator) {
             $document = $parent->ownerDocument;
@@ -124,7 +112,7 @@ class Item extends Castanet_Item
         }
     }
 
-    protected function buildCategory(DOMNode $parent)
+    protected function buildCategory(DOMNode $parent): void
     {
         foreach ($this->categories as $category) {
             if ($category) {
