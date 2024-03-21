@@ -103,7 +103,7 @@ class FeedTest extends TestCase
       <itunes:name>Channel Owner</itunes:name>
     </itunes:owner>
     <itunes:image href="http://Itunes Image Url"/>
-    <itunes:explicit>yes</itunes:explicit>
+    <itunes:explicit>true</itunes:explicit>
     <itunes:block>no</itunes:block>
     <rawvoice:location>Budapest, Hungary</rawvoice:location>
     <rawvoice:donate href="http://DonateLink">DonateTitle</rawvoice:donate>

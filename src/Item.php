@@ -2,11 +2,11 @@
 
 namespace GoncziAkos\Podcast;
 
-use Castanet_Item;
-use Castanet;
+use Silverorange\Castanet\Castanet\Item as CastanetItem;
+use Silverorange\Castanet\Castanet;
 use DOMNode;
 
-class Item extends Castanet_Item
+class Item extends CastanetItem
 {
     public const DC_NAMESPACE = 'http://purl.org/dc/elements/1.1/';
 

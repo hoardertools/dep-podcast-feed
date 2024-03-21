@@ -13,8 +13,31 @@
     "require": {
         "php": ">=7.4",
         "ext-dom": "*",
-        "silverorange/castanet": "^2.0"
+        "goncziakos/castanet": "dev-master"
     },
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "goncziakos/castanet",
+                "version": "dev-master",
+                "dist": {
+                    "url": "https://github.com/goncziakos/Castanet/archive/refs/heads/master.zip",
+                    "type": "zip"
+                },
+                "source": {
+                    "url": "https://github.com/goncziakos/Castanet.git",
+                    "type": "git",
+                    "reference": "dev-master"
+                },
+                "autoload": {
+                    "psr-4": {
+                        "Silverorange\\Castanet\\": "src/"
+                    }
+                }
+            }
+        }
+    ],
     "require-dev": {
         "phpunit/phpunit": "^8.5"
     },

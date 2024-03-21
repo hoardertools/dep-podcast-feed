@@ -2,12 +2,12 @@
 
 namespace GoncziAkos\Podcast;
 
-use Castanet_Feed;
+use Silverorange\Castanet\Castanet\Feed as CastanetFeed;
+use Silverorange\Castanet\Castanet;
 use DOMDocument;
-use Castanet;
 use DOMNode;
 
-class Feed extends Castanet_Feed
+class Feed extends CastanetFeed
 {
     private string $updatePeriod = 'hourly';
 
